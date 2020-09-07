@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const exphbs  = require('express-handlebars');
 const viewConstants  = require('./constants/view.constants');
+const models = require('./models');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -25,6 +26,13 @@ app.set('view engine', 'handlebars');
 app.get('/', (req, res) => {
   res.render('index', { title: 'Home page' });
 });
+
+app.get('/sync', (req, res) => {
+  models.sequelize.sync()
+    .then(() => {
+      res.send('Sync complete!!!');
+    })
+})
 
 app.get('/:page', (req, res) => {
   const page = req.params.page;

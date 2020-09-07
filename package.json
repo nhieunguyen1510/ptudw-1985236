@@ -1,5 +1,5 @@
 {
-  "name": "ptudw-1985236-part1",
+  "name": "ptudw-1985236-part3",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "express-handlebars": "^5.1.0"
+    "express": "4.17.1",
+    "express-handlebars": "5.1.0",
+    "pg": "^8.3.3",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
   }
 }
