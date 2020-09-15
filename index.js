@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const exphbs  = require('express-handlebars');
 const viewConstants  = require('./constants/view.constants');
+const categoryController = require('./controllers/category.controller');
+const homeController = require('./controllers/home.controller');
 const models = require('./models');
 
 const app = express();
@@ -23,9 +25,7 @@ const listPages = [
 app.use(express.static(path.resolve(__dirname, 'public')));
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
-app.get('/', (req, res) => {
-  res.render('index', { title: 'Home page' });
-});
+app.get('/', homeController);
 
 app.get('/sync', (req, res) => {
   models.sequelize.sync()
@@ -34,15 +34,19 @@ app.get('/sync', (req, res) => {
     })
 })
 
-app.get('/:page', (req, res) => {
+app.get('/:page', (req, res, next) => {
   const page = req.params.page;
   if (listPages.includes(page)) {
     const banner = viewConstants.pageBannerMap[page];
-    return res.render(page, { title: 'Sub page', useBanner: true, banner });
+    res.locals.useBanner = true;
+    res.locals.banner = banner;
+    return next();
   }
   res.status(404);
   return res.render('404');
 });
+
+app.use('/category', categoryController);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)

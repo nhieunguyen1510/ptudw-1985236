@@ -10,13 +10,9 @@
             <li class="common-filter">
               <form action="#">
                 <ul>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">Men<span> (3600)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="women" name="brand"><label for="women">Women<span> (3600)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="accessories" name="brand"><label for="accessories">Accessories<span> (3600)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="footwear" name="brand"><label for="footwear">Footwear<span> (3600)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="bayItem" name="brand"><label for="bayItem">Bay item<span> (3600)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="electronics" name="brand"><label for="electronics">Electronics<span> (3600)</span></label></li>
-                  <li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="food">Food<span> (3600)</span></label></li>
+                  {{#each categories}}
+                    <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">{{ this.name }}<span> ({{ this.productCount }})</span></label></li>
+                  {{/each}}
                 </ul>
               </form>
             </li>
@@ -28,7 +24,9 @@
             <div class="head">Brands</div>
             <form action="#">
               <ul>
-                <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>
+                {{#each brands}}
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">{{ this.name }}<span> ({{ this.productCount }})</span></label></li>
+                {{/each}}
                 <li class="filter-list"><input class="pixel-radio" type="radio" id="asus" name="brand"><label for="asus">Asus<span>(29)</span></label></li>
                 <li class="filter-list"><input class="pixel-radio" type="radio" id="gionee" name="brand"><label for="gionee">Gionee<span>(19)</span></label></li>
                 <li class="filter-list"><input class="pixel-radio" type="radio" id="micromax" name="brand"><label for="micromax">Micromax<span>(19)</span></label></li>
@@ -40,7 +38,9 @@
             <div class="head">Color</div>
             <form action="#">
               <ul>
-                <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color"><label for="black">Black<span>(29)</span></label></li>
+                {{#each colors}}
+                  <li class="filter-list"><input class="pixel-radio" type="radio" id="black" name="color"><label for="black">{{ this.name }}<span> ({{ this.productColorCount }})</span></label></li>
+                {{/each}}
                 <li class="filter-list"><input class="pixel-radio" type="radio" id="balckleather" name="color"><label for="balckleather">Black
                     Leather<span>(29)</span></label></li>
                 <li class="filter-list"><input class="pixel-radio" type="radio" id="blackred" name="color"><label for="blackred">Black
